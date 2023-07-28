@@ -27,10 +27,12 @@ amqp.connect("amqp://localhost", (error0, connection) => {
         console.log(" [x] Received %s", msg.content.toString());
         setTimeout(() => {
           console.log(" [x] Done");
+          channel.ack(msg);
         }, secs * 1000);
       },
       {
-        noAck: true,
+        // manual acknowledgment mode
+        noAck: false,
       }
     );
   });
