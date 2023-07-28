@@ -18,6 +18,9 @@ amqp.connect("amqp://localhost", (error0, connection) => {
       durable: true,
     });
 
+    // don't dispatch a new message to a worker until it has processed and acknowledged the previous one
+    channel.prefetch(1);
+
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
     channel.consume(
