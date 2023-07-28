@@ -14,6 +14,7 @@ amqp.connect("amqp://localhost", (error0, connection) => {
 
     // This makes sure the queue is declared before attempting to consume from it
     channel.assertQueue(queue, {
+      // message durability
       durable: true,
     });
 

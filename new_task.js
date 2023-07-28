@@ -14,10 +14,12 @@ amqp.connect("amqp://localhost", (error0, connection) => {
     const msg = process.argv.slice(2).join(" ") || "Hello world!";
 
     channel.assertQueue(queue, {
+      // message durability
       durable: true,
     });
 
     channel.sendToQueue(queue, Buffer.from(msg), {
+      // message persistence
       persistent: true,
     });
     console.log(" [x] Sent %s", msg);
