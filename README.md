@@ -1,1 +1,1 @@
-RabbitMQ
+RabbitMQ, first steps.
